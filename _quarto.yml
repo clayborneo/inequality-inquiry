@@ -12,7 +12,7 @@ project:
     - "notebooks/07_wellbeing_across_distributions_executed.ipynb"
 
 website:
-  title: "Income Inequality: A Data-Driven Investigation"
+  title: "Inequality: An Open Investigation"
   description: "An open research project exploring income inequality across rich countries and the global income spectrum."
   navbar:
     left:
@@ -62,7 +62,7 @@ website:
   comments:
     giscus:
       repo: clayborneo/inequality-inquiry
-      category: "Comments"
+      category: "General"
       mapping: pathname
       reactions-enabled: true
       input-position: top
