@@ -1,0 +1,85 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "notebooks/01_measuring_inequality.ipynb"
+    - "notebooks/02_predistribution_vs_redistribution.ipynb"
+    - "notebooks/03_absolute_vs_relative.ipynb"
+    - "notebooks/04_wealth_vs_income.ipynb"
+    - "notebooks/05_inequality_and_society.ipynb"
+    - "notebooks/06_synthesis.ipynb"
+    - "notebooks/07_wellbeing_across_distributions_executed.ipynb"
+
+website:
+  title: "Income Inequality: A Data-Driven Investigation"
+  description: "An open research project exploring income inequality across rich countries and the global income spectrum."
+  navbar:
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Notebooks
+        menu:
+          - text: "01: Measuring Inequality"
+            href: notebooks/01_measuring_inequality.ipynb
+          - text: "02: Predistribution vs. Redistribution"
+            href: notebooks/02_predistribution_vs_redistribution.ipynb
+          - text: "03: Absolute vs. Relative Measures"
+            href: notebooks/03_absolute_vs_relative.ipynb
+          - text: "04: Wealth vs. Income"
+            href: notebooks/04_wealth_vs_income.ipynb
+          - text: "05: Inequality and Society"
+            href: notebooks/05_inequality_and_society.ipynb
+          - text: "06: Synthesis"
+            href: notebooks/06_synthesis.ipynb
+          - text: "07: Well-being Across Distributions"
+            href: notebooks/07_wellbeing_across_distributions_executed.ipynb
+    right:
+      - icon: github
+        href: https://github.com/clayborneo/inequality-inquiry
+        aria-label: GitHub
+  sidebar:
+    style: floating
+    search: true
+    contents:
+      - section: "The Analysis"
+        contents:
+          - index.qmd
+          - notebooks/01_measuring_inequality.ipynb
+          - notebooks/02_predistribution_vs_redistribution.ipynb
+          - notebooks/03_absolute_vs_relative.ipynb
+          - notebooks/04_wealth_vs_income.ipynb
+          - notebooks/05_inequality_and_society.ipynb
+          - notebooks/06_synthesis.ipynb
+          - notebooks/07_wellbeing_across_distributions_executed.ipynb
+      - section: "About"
+        contents:
+          - methodology.qmd
+
+  page-footer:
+    center: "Open research project. All analysis is reproducible from the source code."
+
+  comments:
+    giscus:
+      repo: clayborneo/inequality-inquiry
+      category: "Comments"
+      mapping: pathname
+      reactions-enabled: true
+      input-position: top
+      theme: light
+
+execute:
+  enabled: false
+
+format:
+  html:
+    theme:
+      light: cosmo
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+    smooth-scroll: true
+    link-external-newwindow: true
+

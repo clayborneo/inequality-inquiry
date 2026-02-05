@@ -1,0 +1,18 @@
+.cache/
+raw_data/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Quarto
+_site/
+.quarto/
+
+# Claude Code
+.claude/
+
+# Executed notebook duplicates (except 07 which the site needs)
+notebooks/00_setup_and_data_check_executed.ipynb
+
+/.quarto/

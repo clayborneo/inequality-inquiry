@@ -1,0 +1,68 @@
+---
+title: "Income Inequality: A Data-Driven Investigation"
+subtitle: "What do the data actually say about inequality, well-being, and the distribution of income?"
+---
+
+## What is this?
+
+This is an open research project that uses publicly available data to investigate
+income and wealth inequality. It started as a personal attempt to understand
+the empirical landscape — what's well-established, what's contested, and where
+the data run out.
+
+The analysis spans seven notebooks, each tackling a different question:
+
+| Notebook | Question |
+|----------|----------|
+| [01: Measuring Inequality](notebooks/01_measuring_inequality.ipynb) | How do we measure inequality, and do different measures tell different stories? |
+| [02: Predistribution vs. Redistribution](notebooks/02_predistribution_vs_redistribution.ipynb) | Is inequality driven by market outcomes or by tax/transfer policy? |
+| [03: Absolute vs. Relative](notebooks/03_absolute_vs_relative.ipynb) | Are the poor getting poorer, or just falling behind? |
+| [04: Wealth vs. Income](notebooks/04_wealth_vs_income.ipynb) | How does wealth inequality compare to income inequality? |
+| [05: Inequality and Society](notebooks/05_inequality_and_society.ipynb) | Does inequality damage health and social outcomes? |
+| [06: Synthesis](notebooks/06_synthesis.ipynb) | What can we conclude from the full picture? |
+| [07: Well-being Across Distributions](notebooks/07_wellbeing_across_distributions_executed.ipynb) | How does well-being vary across the global income spectrum? |
+
+## Data sources
+
+All data are drawn from public sources:
+
+- **[World Inequality Database (WID)](https://wid.world/)** — Income and wealth
+  distributions from tax and survey data, harmonized across countries.
+- **[SWIID](https://fsolt.org/swiid/)** — Standardized World Income Inequality
+  Database, providing comparable Gini coefficients.
+- **[World Bank](https://data.worldbank.org/)** — Health, education, poverty,
+  and national accounts indicators.
+- **[Our World in Data](https://ourworldindata.org/)** — Subjective well-being
+  (Cantril Ladder / World Happiness Report).
+
+## Countries covered
+
+The core analysis compares seven rich countries with different policy regimes:
+**US, UK, France, Germany, Sweden, Denmark, Norway**.
+
+Notebook 07 expands to ~24 countries spanning the global income spectrum, from
+Norway and the US to Ethiopia and Bangladesh.
+
+## How to read this
+
+**If you're not technical:** Click any notebook link above. The code is folded
+by default — you'll just see the text, charts, and analysis. Click "Show code"
+on any chart if you want to see how it was made.
+
+**If you are technical:** The full source code is on
+[GitHub](https://github.com/clayborneo/inequality-inquiry). Clone the repo, install
+`requirements.txt`, and run the notebooks yourself. Every chart is reproducible.
+
+## Feedback and critique
+
+This is a learning project, not a finished product. If you think the analysis
+is wrong, misleading, or missing something important — **please say so.**
+You can leave comments on any page using the comment box at the bottom,
+or open an issue on GitHub.
+
+I'm especially interested in:
+
+- Methodological objections (Am I using the right measures? The right comparisons?)
+- Missing context (What important literature am I ignoring?)
+- Data limitations I haven't acknowledged
+- Alternative interpretations of the same data

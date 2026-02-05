@@ -1,0 +1,99 @@
+---
+title: "Methodology and Limitations"
+---
+
+## Approach
+
+This project uses a **descriptive, comparative** approach. It does not attempt
+to estimate causal effects. The goal is to document patterns in the data
+and to understand what different measures of inequality actually capture.
+
+Where the analysis involves statistical relationships (e.g., Gini vs. life
+expectancy), these are presented as correlations, not causal claims. The text
+discusses the causal debate but does not take a strong position.
+
+## Key methodological choices
+
+### Income concepts
+
+The World Inequality Database provides three income concepts:
+
+- **Factor income**: Labor + capital income before any government intervention
+- **Pre-tax national income**: Factor income + pensions and social insurance,
+  before income tax
+- **Post-tax disposable income**: After all taxes and cash transfers
+
+The choice of concept matters enormously. Pre-tax inequality is much higher
+than post-tax inequality in redistributive countries (Nordics) but similar in
+the US. Most analysis in this project uses both pre-tax and post-tax to show
+how redistribution changes the picture.
+
+### PPP adjustment
+
+Cross-country income comparisons use Purchasing Power Parity (PPP) exchange
+rates, which adjust for differences in price levels. WID reports income in
+local currency; we convert using WID's own PPP factors (`xlcuspi999`),
+matched to the year of the income data to avoid inflation distortion.
+
+PPP adjustment is essential for global comparisons but imperfect — it assumes
+a common consumption basket that may not reflect actual spending patterns in
+different countries.
+
+### Unit of analysis
+
+WID uses **equal-split adults** as the default unit: household income is
+divided equally between adult members. This means a single person earning
+\$60k and a couple each earning \$30k are treated the same. This is a
+reasonable default but masks within-household inequality.
+
+### Country selection
+
+The core seven countries (US, UK, France, Germany, Sweden, Denmark, Norway)
+were chosen to represent different positions on the inequality-redistribution
+spectrum among rich democracies. They are not a random sample of anything.
+
+The expanded set in Notebook 07 adds countries across income tiers but is
+still a convenience sample, not a comprehensive survey.
+
+## Known limitations
+
+1. **WID data quality varies by country.** Data for the US, France, and
+   Nordics are based on comprehensive tax records. Data for many developing
+   countries rely on surveys with known undercoverage of top incomes.
+
+2. **Cross-sectional analysis cannot establish causation.** The correlation
+   between inequality and poor health outcomes could reflect reverse causation,
+   confounding, or the concavity of the income-health relationship.
+
+3. **The "social wage" is invisible.** Nordic countries provide extensive
+   public services (healthcare, education, childcare) that don't appear in
+   disposable income statistics. Comparing cash income understates the
+   living standards of lower-income Scandinavians relative to Americans.
+
+4. **Happiness data is noisy.** The Cantril Ladder is a single survey question
+   with significant measurement error. Cross-country comparisons may be
+   affected by cultural differences in response styles.
+
+5. **Small N problem.** With 7 core countries (or 23 in the expanded set),
+   statistical power is limited. A single outlier (the US) can drive or
+   destroy correlations.
+
+6. **Time period sensitivity.** Most cross-sectional comparisons use ~2019
+   data. Results may differ for other years, and the COVID-19 pandemic
+   has disrupted many indicators.
+
+## Reproducibility
+
+All code is available in the [GitHub repository](https://github.com/clayborneo/inequality-inquiry).
+Data are fetched from public APIs (World Bank, WID, OWID) and cached locally.
+To reproduce the analysis:
+
+```bash
+git clone https://github.com/clayborneo/inequality-inquiry.git
+cd income-inequality
+pip install -r requirements.txt
+jupyter nbconvert --to notebook --execute notebooks/*.ipynb
+```
+
+The cache layer (`data/cache.py`) stores API responses as parquet files
+to avoid repeated downloads. Clear the cache with `python -c "from data.cache import clear_cache; clear_cache()"`.
