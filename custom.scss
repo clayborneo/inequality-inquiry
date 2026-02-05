@@ -1,0 +1,194 @@
+/*-- scss:defaults --*/
+
+// Typography
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "SFMono-Regular", Menlo, "JetBrains Mono", "Fira Code", monospace;
+$font-size-base: 1.05rem;
+$line-height-base: 1.7;
+$headings-font-weight: 600;
+$headings-line-height: 1.3;
+$headings-margin-bottom: 0.75rem;
+
+// Accent colors
+$primary: #3b6d8f;
+$link-color: #3b6d8f;
+$link-hover-color: #274a63;
+
+// Navbar
+$navbar-bg: #2c3e50;
+$navbar-fg: #ecf0f1;
+
+/*-- scss:rules --*/
+
+// ---- Typography hierarchy ----
+h1 {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  color: #2c3e50;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e0e4e8;
+  color: #34495e;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  color: #4a5568;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+p {
+  margin-bottom: 1.1rem;
+}
+
+// Optimal reading width for prose
+.content p,
+.cell-output p {
+  max-width: 75ch;
+}
+
+// ---- Navbar ----
+.navbar {
+  border-bottom: 2px solid #3b6d8f;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.navbar .navbar-brand {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+// ---- Sidebar ----
+.sidebar nav .sidebar-item .sidebar-item-text {
+  font-size: 0.92rem;
+}
+
+// ---- Links ----
+a {
+  transition: color 0.15s ease, border-bottom-color 0.15s ease;
+}
+
+.content a:not(.nav-link):not(.navbar-brand):not(.sidebar-item-text) {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(59, 109, 143, 0.3);
+}
+
+.content a:not(.nav-link):not(.navbar-brand):not(.sidebar-item-text):hover {
+  border-bottom-color: #3b6d8f;
+}
+
+// ---- Table styling ----
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.content table thead th {
+  background: #f7f9fb;
+  color: #2c3e50;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #3b6d8f;
+  text-align: left;
+}
+
+.content table tbody td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #e8ecf0;
+  vertical-align: top;
+}
+
+.content table tbody tr:hover {
+  background: #f7f9fb;
+}
+
+.content table tbody tr:last-child td {
+  border-bottom: 2px solid #e8ecf0;
+}
+
+// ---- Code blocks ----
+div.sourceCode {
+  background: #f8f9fa;
+  border: 1px solid #e8ecf0;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+pre.sourceCode {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding: 1rem;
+}
+
+details > summary {
+  font-size: 0.88rem;
+  color: #5a7a94;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.4rem 0;
+}
+
+details > summary:hover {
+  color: #3b6d8f;
+}
+
+// ---- Figure / chart image styling ----
+.cell-output-display {
+  margin: 1.5rem 0;
+}
+
+.cell-output-display img {
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  max-width: 100%;
+}
+
+// ---- Page footer ----
+.nav-footer {
+  border-top: 1px solid #e0e4e8;
+  font-size: 0.85rem;
+  color: #6c757d;
+  padding-top: 1rem;
+  margin-top: 3rem;
+}
+
+// ---- Blockquotes ----
+blockquote {
+  border-left: 3px solid #3b6d8f;
+  padding-left: 1rem;
+  color: #4a5568;
+  font-style: italic;
+}
+
+// ---- Giscus spacing ----
+#giscus-container {
+  margin-top: 3rem;
+}
+
+// ---- Pandas dataframe output ----
+.cell-output-display .dataframe {
+  font-size: 0.85rem;
+}
+
+.cell-output-display .dataframe th {
+  background: #f7f9fb;
+  font-weight: 600;
+}

@@ -6,19 +6,93 @@ import seaborn as sns
 
 from data.config import COUNTRY_COLORS, COUNTRY_NAMES, FIGURES_DIR
 
+# ---------------------------------------------------------------------------
+# Semantic colors for recurring chart concepts
+# ---------------------------------------------------------------------------
+COLORS = {
+    "market": "#c75b5b",      # brick red — pre-tax / market / wealth
+    "disposable": "#4878a8",  # steel blue — post-tax / disposable / income
+    "income": "#4878a8",
+    "wealth": "#c75b5b",
+    "bottom": "#4878a8",      # bottom group
+    "middle": "#d98c3e",      # middle group
+    "top": "#c75b5b",         # top group
+    "fit_line": "#999999",    # regression / fit lines
+    "annotation": "#555555",  # annotation text
+}
+
 
 def set_style():
     """Apply project-wide matplotlib/seaborn style settings."""
-    sns.set_theme(style="whitegrid", font_scale=1.1)
+    sns.set_theme(style="white", font_scale=1.1)
     plt.rcParams.update({
+        # Figure
         "figure.figsize": (10, 6),
         "figure.dpi": 150,
+        "figure.facecolor": "white",
         "savefig.dpi": 300,
         "savefig.bbox": "tight",
+        "savefig.facecolor": "white",
+        "savefig.transparent": False,
+
+        # Spines — remove top and right for a clean, modern look
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+        "axes.spines.left": True,
+        "axes.spines.bottom": True,
+
+        # Spine color — soften from black
+        "axes.edgecolor": "#cccccc",
+        "axes.linewidth": 0.8,
+
+        # Grid — horizontal only, very subtle
+        "axes.grid": True,
+        "axes.grid.axis": "y",
+        "grid.color": "#e0e0e0",
+        "grid.linewidth": 0.5,
+        "grid.alpha": 0.5,
+
+        # Typography
         "axes.titlesize": 14,
-        "axes.labelsize": 12,
+        "axes.titleweight": 600,
+        "axes.titlepad": 16,
+        "axes.labelsize": 11,
+        "axes.labelcolor": "#4a4a4a",
+        "axes.labelpad": 8,
         "font.family": "sans-serif",
+        "font.sans-serif": ["Helvetica Neue", "Arial", "sans-serif"],
+
+        # Ticks — invisible marks, labels only
+        "xtick.labelsize": 10,
+        "ytick.labelsize": 10,
+        "xtick.color": "#666666",
+        "ytick.color": "#666666",
+        "xtick.major.size": 0,
+        "ytick.major.size": 0,
+        "xtick.major.pad": 6,
+        "ytick.major.pad": 6,
+
+        # Legend
+        "legend.frameon": False,
+        "legend.fontsize": 10,
+        "legend.title_fontsize": 11,
+        "legend.labelspacing": 0.5,
+        "legend.handlelength": 1.5,
+        "legend.borderaxespad": 1,
+
+        # Lines
+        "lines.linewidth": 2.2,
+        "lines.markersize": 7,
     })
+
+
+def styled_title(ax, main, subtitle=None):
+    """Set a main title and optional gray subtitle on an axes."""
+    ax.set_title(main, fontsize=14, fontweight=600, color="#2c3e50", pad=16)
+    if subtitle:
+        ax.text(0.5, 1.02, subtitle,
+                transform=ax.transAxes, ha="center", va="bottom",
+                fontsize=10, color="#7f8c8d", style="italic")
 
 
 def country_color(code: str) -> str:
@@ -67,7 +141,7 @@ def lorenz_curve(ax, shares, label=None, color=None, **kwargs):
     cum_share = np.concatenate([[0], np.cumsum(shares)])
 
     ax.plot(cum_pop, cum_share, label=label, color=color, linewidth=2, **kwargs)
-    ax.plot([0, 1], [0, 1], color="gray", linestyle="--", linewidth=1, alpha=0.7)
+    ax.plot([0, 1], [0, 1], color="#cccccc", linestyle="--", linewidth=1, alpha=0.7)
     ax.set_xlabel("Cumulative share of population")
     ax.set_ylabel("Cumulative share of income")
     ax.set_xlim(0, 1)
@@ -93,9 +167,9 @@ def slope_chart(ax, left_values, right_values, labels, left_label="Market",
     for lv, rv, label, color in zip(left_values, right_values, labels, colors):
         ax.plot([0, 1], [lv, rv], color=color, linewidth=2, alpha=0.8)
         ax.text(-0.05, lv, country_name(label), ha="right", va="center",
-                fontsize=9, color=color)
+                fontsize=10, color=color)
         ax.text(1.05, rv, f"{rv:.3f}", ha="left", va="center",
-                fontsize=9, color=color)
+                fontsize=10, color=color)
 
     ax.set_xlim(-0.3, 1.3)
     ax.set_xticks([0, 1])
@@ -109,4 +183,5 @@ def save_figure(fig, name: str, formats=("png",)):
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
     for fmt in formats:
         path = FIGURES_DIR / f"{name}.{fmt}"
-        fig.savefig(path, bbox_inches="tight")
+        fig.savefig(path, bbox_inches="tight", facecolor="white",
+                    edgecolor="none")

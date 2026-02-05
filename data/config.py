@@ -91,40 +91,42 @@ ISO2_TO_EUROSTAT["GB"] = "UK"
 # Consistent color palette (one color per country)
 # ---------------------------------------------------------------------------
 COUNTRY_COLORS = {
-    "US": "#1f77b4",  # blue
-    "GB": "#ff7f0e",  # orange
-    "FR": "#2ca02c",  # green
-    "DE": "#d62728",  # red
-    "SE": "#9467bd",  # purple
-    "DK": "#8c564b",  # brown
-    "NO": "#e377c2",  # pink
-    "IT": "#7f7f7f",  # gray
-    "ES": "#bcbd22",  # olive
-    "NL": "#17becf",  # cyan
-    "FI": "#aec7e8",  # light blue
-    "PL": "#ffbb78",  # light orange
-    "CZ": "#98df8a",  # light green
-    "IE": "#ff9896",  # light red
-    # High-income (blues)
-    "JP": "#4292c6",
-    "AU": "#6baed6",
-    "CL": "#9ecae1",
-    # Upper-middle income (greens)
-    "CN": "#238b45",
-    "BR": "#41ab5d",
-    "MX": "#74c476",
-    "ZA": "#a1d99b",
-    "TR": "#c7e9c0",
-    "RU": "#006d2c",
-    # Lower-middle income (oranges)
-    "IN": "#e6550d",
-    "ID": "#fd8d3c",
-    "PH": "#fdae6b",
-    "EG": "#fdd0a2",
-    "NG": "#d94701",
-    # Low-income (reds)
-    "ET": "#cb181d",
-    "BD": "#fb6a4a",
+    # Focus countries — muted, distinctive hues
+    "US": "#4878a8",  # steel blue
+    "GB": "#d98c3e",  # muted amber
+    "FR": "#5a9e6f",  # sage green
+    "DE": "#c75b5b",  # muted brick
+    "SE": "#8b72b2",  # muted lavender
+    "DK": "#8c7b6b",  # warm taupe
+    "NO": "#c987a8",  # dusty rose
+    # Extended countries
+    "IT": "#8c8c8c",  # neutral gray
+    "ES": "#a3a843",  # muted olive
+    "NL": "#4bacb5",  # muted teal
+    "FI": "#95b4d4",  # light steel
+    "PL": "#e0aa6a",  # light amber
+    "CZ": "#7ec28e",  # light sage
+    "IE": "#d99090",  # light brick
+    # High-income (blue gradient)
+    "JP": "#5b8fb8",
+    "AU": "#7ba8cb",
+    "CL": "#9fc1dd",
+    # Upper-middle income (teal-green gradient)
+    "CN": "#2e7d5a",
+    "BR": "#4a9a73",
+    "MX": "#6db58d",
+    "ZA": "#92caa8",
+    "TR": "#b5ddc3",
+    "RU": "#1b6b42",
+    # Lower-middle income (warm amber gradient)
+    "IN": "#c06820",
+    "ID": "#d18a4a",
+    "PH": "#dfaa75",
+    "EG": "#ecc9a0",
+    "NG": "#b25518",
+    # Low-income (muted coral gradient)
+    "ET": "#b5403a",
+    "BD": "#d17570",
 }
 
 # ---------------------------------------------------------------------------

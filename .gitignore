@@ -16,3 +16,5 @@ _site/
 notebooks/00_setup_and_data_check_executed.ipynb
 
 /.quarto/
+
+**/*.quarto_ipynb
