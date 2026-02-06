@@ -82,6 +82,35 @@ still a convenience sample, not a comprehensive survey.
    data. Results may differ for other years, and the COVID-19 pandemic
    has disrupted many indicators.
 
+## Time-series analysis (Notebook 08)
+
+Notebook 08 examines the Easterlin Paradox: whether countries that get
+richer over time also get happier. This introduces three additional data
+sources:
+
+- **Gallup World Poll / Cantril Ladder** (via Our World in Data): ~2005–2024,
+  130+ countries. The same 0–10 scale used in Notebook 07, but now as a
+  time series rather than a cross-sectional snapshot.
+- **US General Social Survey (GSS)**: 1972–present. A 3-category happiness
+  question ("very happy," "pretty happy," "not too happy"). The canonical
+  dataset for the Easterlin Paradox.
+- **World Values Survey / European Values Study**: 1981–2022, ~100 countries
+  surveyed in 7 waves. Life satisfaction on a 1–10 scale. The longest
+  available multi-country time series.
+
+Key limitations specific to the time-series analysis:
+
+- **Ordinal scales**: The GSS 3-point scale cannot distinguish cardinal
+  changes in well-being. Different assumptions about the spacing between
+  categories can produce different trend conclusions (Bond & Lang 2025).
+- **Short vs. long run**: Business-cycle fluctuations in GDP are correlated
+  with happiness changes, but sustained long-run growth may not be
+  (Easterlin & O'Connor 2020). Time horizon matters.
+- **WVS coverage is intermittent**: Countries are surveyed in waves (~every
+  5 years), not annually, making precise trend estimation difficult.
+- **Cultural response bias**: Cross-country comparisons of subjective scales
+  may be affected by culturally different norms around expressing satisfaction.
+
 ## Reproducibility
 
 All code is available in the [GitHub repository](https://github.com/clayborneo/inequality-inquiry).

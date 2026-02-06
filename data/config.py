@@ -64,6 +64,11 @@ COUNTRY_NAMES = {
     "NG": "Nigeria",
     "ET": "Ethiopia",
     "BD": "Bangladesh",
+    # WVS / Easterlin Paradox additions
+    "KR": "South Korea",
+    "AR": "Argentina",
+    "CO": "Colombia",
+    "PE": "Peru",
 }
 
 # ISO-2 to ISO-3 mapping (for OECD queries)
@@ -79,6 +84,8 @@ ISO2_TO_ISO3 = {
     "ZA": "ZAF", "TR": "TUR", "RU": "RUS", "IN": "IND",
     "ID": "IDN", "PH": "PHL", "EG": "EGY", "NG": "NGA",
     "ET": "ETH", "BD": "BGD",
+    # WVS / Easterlin Paradox additions
+    "KR": "KOR", "AR": "ARG", "CO": "COL", "PE": "PER",
 }
 
 ISO3_TO_ISO2 = {v: k for k, v in ISO2_TO_ISO3.items()}

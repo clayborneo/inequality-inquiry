@@ -10,6 +10,7 @@ project:
     - "notebooks/05_inequality_and_society.ipynb"
     - "notebooks/06_synthesis.ipynb"
     - "notebooks/07_wellbeing_across_distributions_executed.ipynb"
+    - "notebooks/08_easterlin_paradox.ipynb"
 
 website:
   title: "Inequality: An Open Investigation"
@@ -34,6 +35,8 @@ website:
             href: notebooks/06_synthesis.ipynb
           - text: "07: Well-being Across Distributions"
             href: notebooks/07_wellbeing_across_distributions_executed.ipynb
+          - text: "08: The Easterlin Paradox"
+            href: notebooks/08_easterlin_paradox.ipynb
     right:
       - icon: github
         href: https://github.com/clayborneo/inequality-inquiry
@@ -52,6 +55,7 @@ website:
           - notebooks/05_inequality_and_society.ipynb
           - notebooks/06_synthesis.ipynb
           - notebooks/07_wellbeing_across_distributions_executed.ipynb
+          - notebooks/08_easterlin_paradox.ipynb
       - section: "About"
         contents:
           - methodology.qmd

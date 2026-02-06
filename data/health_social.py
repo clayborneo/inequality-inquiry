@@ -30,7 +30,7 @@ def _fetch_world_bank_indicator(indicator_code: str, countries: list[str],
     country_str = ";".join(countries)
     url = (
         f"https://api.worldbank.org/v2/country/{country_str}/indicator/"
-        f"{indicator_code}?date={start_year}:{end_year}&format=json&per_page=1000"
+        f"{indicator_code}?date={start_year}:{end_year}&format=json&per_page=10000"
     )
 
     resp = requests.get(url, timeout=60)
@@ -292,3 +292,107 @@ def get_happiness_scores(year: int = 2019):
         return df[["country_code", "happiness_score"]]
 
     return cached(f"happiness_scores_{year}", _load, max_age_days=30)
+
+
+def get_happiness_timeseries(countries=None, start_year: int = 2005,
+                              end_year: int = 2024):
+    """Fetch Cantril Ladder time-series from Our World in Data.
+
+    Returns all available country-year observations instead of collapsing
+    to a single year per country (cf. get_happiness_scores).
+
+    Parameters
+    ----------
+    countries : list of str, optional
+        ISO-2 codes. If None, returns all available countries.
+    start_year, end_year : int
+        Year range to include.
+
+    Returns
+    -------
+    pd.DataFrame with columns: country_code, year, happiness_score
+    """
+    data_url = "https://api.ourworldindata.org/v1/indicators/1025227.data.json"
+    meta_url = "https://api.ourworldindata.org/v1/indicators/1025227.metadata.json"
+
+    def _load():
+        try:
+            data_resp = requests.get(data_url, timeout=60)
+            data_resp.raise_for_status()
+            meta_resp = requests.get(meta_url, timeout=60)
+            meta_resp.raise_for_status()
+        except Exception:
+            return pd.DataFrame(columns=["country_code", "year",
+                                         "happiness_score"])
+
+        data = data_resp.json()
+        meta = meta_resp.json()
+
+        entity_map = {}
+        if "dimensions" in meta and "entities" in meta["dimensions"]:
+            for ent in meta["dimensions"]["entities"].get("values", []):
+                if ent.get("code"):
+                    entity_map[ent["id"]] = ent["code"]
+
+        df = pd.DataFrame({
+            "entity_id": data["entities"],
+            "year": data["years"],
+            "happiness_score": data["values"],
+        })
+
+        df["country_iso3"] = df["entity_id"].map(entity_map)
+        df = df.dropna(subset=["country_iso3"])
+        df["country_code"] = df["country_iso3"].map(ISO3_TO_ISO2)
+        df = df.dropna(subset=["country_code"])
+
+        df = df[(df["year"] >= start_year) & (df["year"] <= end_year)].copy()
+
+        if countries is not None:
+            df = df[df["country_code"].isin(countries)]
+
+        return df[["country_code", "year", "happiness_score"]].reset_index(
+            drop=True)
+
+    return cached(f"happiness_ts_{start_year}_{end_year}", _load,
+                  max_age_days=30)
+
+
+def get_gdp_timeseries(countries=None, start_year: int = 1970,
+                        end_year: int = 2024):
+    """Fetch GDP per capita (PPP, constant 2017 international $) time-series
+    from the World Bank API.
+
+    Parameters
+    ----------
+    countries : list of str, optional
+        ISO-2 codes. Defaults to WELLBEING_COUNTRIES.
+    start_year, end_year : int
+
+    Returns
+    -------
+    pd.DataFrame with columns: country_code, year, gdp_per_capita_ppp
+    """
+    if countries is None:
+        countries = WELLBEING_COUNTRIES
+
+    iso3_codes = [ISO2_TO_ISO3[c] for c in countries if c in ISO2_TO_ISO3]
+
+    def _load():
+        wb_df = _fetch_world_bank_indicator(
+            "NY.GDP.PCAP.PP.KD", iso3_codes,
+            start_year=start_year, end_year=end_year,
+        )
+        if wb_df.empty:
+            return pd.DataFrame(columns=["country_code", "year",
+                                         "gdp_per_capita_ppp"])
+
+        wb_df["country_code"] = wb_df["country_iso3"].map(ISO3_TO_ISO2)
+        wb_df = wb_df.dropna(subset=["country_code"])
+        wb_df = wb_df.rename(columns={"value": "gdp_per_capita_ppp"})
+
+        return wb_df[["country_code", "year",
+                       "gdp_per_capita_ppp"]].reset_index(drop=True)
+
+    key_countries = "_".join(sorted(countries))
+    return cached(f"gdp_ts_{start_year}_{end_year}_{key_countries}", _load,
+                  max_age_days=30)
