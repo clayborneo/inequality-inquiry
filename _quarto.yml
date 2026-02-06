@@ -11,6 +11,7 @@ project:
     - "notebooks/06_synthesis.ipynb"
     - "notebooks/07_wellbeing_across_distributions_executed.ipynb"
     - "notebooks/08_easterlin_paradox.ipynb"
+    - "notebooks/09_labor_force_and_working_hours.ipynb"
 
 website:
   title: "Inequality: An Open Investigation"
@@ -37,6 +38,8 @@ website:
             href: notebooks/07_wellbeing_across_distributions_executed.ipynb
           - text: "08: The Easterlin Paradox"
             href: notebooks/08_easterlin_paradox.ipynb
+          - text: "09: Labor Force & Working Hours"
+            href: notebooks/09_labor_force_and_working_hours.ipynb
     right:
       - icon: github
         href: https://github.com/clayborneo/inequality-inquiry
@@ -56,6 +59,7 @@ website:
           - notebooks/06_synthesis.ipynb
           - notebooks/07_wellbeing_across_distributions_executed.ipynb
           - notebooks/08_easterlin_paradox.ipynb
+          - notebooks/09_labor_force_and_working_hours.ipynb
       - section: "About"
         contents:
           - methodology.qmd

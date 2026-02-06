@@ -10,7 +10,7 @@ income and wealth inequality. It started as a personal attempt to understand
 the empirical landscape — what's well-established, what's contested, and where
 the data run out.
 
-The analysis spans eight notebooks, each tackling a different question:
+The analysis spans nine notebooks, each tackling a different question:
 
 | Notebook | Question |
 |----------|----------|
@@ -22,6 +22,7 @@ The analysis spans eight notebooks, each tackling a different question:
 | [06: Synthesis](notebooks/06_synthesis.ipynb) | What can we conclude from the full picture? |
 | [07: Well-being Across Distributions](notebooks/07_wellbeing_across_distributions_executed.ipynb) | How does well-being vary across the global income spectrum? |
 | [08: The Easterlin Paradox](notebooks/08_easterlin_paradox.ipynb) | As countries get richer over time, do they get happier? |
+| [09: Labor Force & Working Hours](notebooks/09_labor_force_and_working_hours.ipynb) | Do people in unequal countries work longer hours? What does this buy? |
 
 ## Data sources
 
@@ -34,7 +35,8 @@ All data are drawn from public sources:
 - **[World Bank](https://data.worldbank.org/)** — Health, education, poverty,
   and national accounts indicators.
 - **[Our World in Data](https://ourworldindata.org/)** — Subjective well-being
-  (Cantril Ladder / World Happiness Report).
+  (Cantril Ladder / World Happiness Report) and working hours per worker
+  (Huberman & Minns + Penn World Table).
 
 ## Countries covered
 

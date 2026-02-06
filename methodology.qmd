@@ -111,6 +111,39 @@ Key limitations specific to the time-series analysis:
 - **Cultural response bias**: Cross-country comparisons of subjective scales
   may be affected by culturally different norms around expressing satisfaction.
 
+## Labor market analysis (Notebook 09)
+
+Notebook 09 examines labor force participation and working hours across
+countries, using three additional data sources:
+
+- **Our World in Data / Penn World Table** (working hours): Average annual
+  hours per person engaged. PWT provides data for 185 countries from
+  1950 onward; historical data from Huberman & Minns (2007) extends select
+  countries back to 1870.
+- **World Bank** (labor force participation): Total, male, and female
+  participation rates from the ILO-modeled estimates. Coverage: 1990-2024,
+  most countries.
+- **Approximate productivity**: GDP per hour worked is computed as
+  GDP per capita divided by (labor force participation rate x hours per worker).
+  This is an approximation that assumes employment rate equals participation
+  rate. True GDP-per-hour data from the OECD is more precise but covers
+  fewer countries.
+
+Key limitations specific to the labor analysis:
+
+- **Economy-wide averages**: Average hours per worker masks enormous
+  variation within countries — between full-time and part-time workers,
+  formal and informal sectors, and different occupations.
+- **Historical data covers only production workers**: Pre-1950 data from
+  Huberman & Minns measures full-time workers in non-agricultural activities,
+  not the full economy.
+- **Informal work**: In developing countries, labor force participation
+  rates undercount informal work, especially women's unpaid domestic labor.
+  Cross-country comparisons must be interpreted cautiously.
+- **Causation vs. correlation**: The relationship between inequality and
+  working hours could run in either direction or be driven by common
+  causes (labor market institutions, tax policy, cultural norms).
+
 ## Reproducibility
 
 All code is available in the [GitHub repository](https://github.com/clayborneo/inequality-inquiry).
